@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laura.tmsbackend.mapper.CourseFileMapper">
+
+    <insert id="insert">
+        INSERT INTO course_file(slides_name, file_name, training_class_id)
+        VALUES(#{slidesName}, #{fileName}, #{trainingClassId})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM course_file WHERE course_file_id = #{courseFileId}
+    </delete>
+
+    <update id="update">
+        UPDATE course_file SET
+                               slides_name = #{slidesName},
+                               file_name = #{fileName},
+                               training_class_id = #{trainingClassId}
+        WHERE course_file_id = #{courseFileId}
+    </update>
+
+    <select id="findById" resultType="com.laura.tmsbackend.model.CourseFile">
+        SELECT course_file_id, slides_name, file_name, training_class_id
+        FROM course_file WHERE course_file_id = #{courseFileId}
+    </select>
+
+    <select id="findAll" resultType="com.laura.tmsbackend.model.CourseFile">
+        SELECT course_file_id, slides_name, file_name, training_class_id
+        FROM course_file
+    </select>
+
+</mapper>

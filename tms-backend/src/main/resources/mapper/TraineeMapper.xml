@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laura.tmsbackend.mapper.TraineeMapper">
+
+    <insert id="insert">
+        INSERT INTO trainee(
+            name,
+            branch,
+            level,
+            entry_date
+        )
+        VALUES(#{name},#{branch},#{level},#{entryDate})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM trainee WHERE sales_id = #{salesId}
+    </delete>
+
+    <update id="update">
+        UPDATE trainee SET
+                           name = #{name},
+                           branch = #{branch},
+                           level = #{level},
+                           entry_date = #{entryDate}
+        WHERE salesId = #{sales_id}
+    </update>
+
+    <select id="findById" resultType="com.laura.tmsbackend.model.Trainee">
+        SELECT sales_id, name, branch, level, entry_date
+        FROM WHERE salesId = #{sales_id}
+    </select>
+
+    <select id="findAll" resultType="com.laura.tmsbackend.model.Trainee">
+        SELECT sales_id, name, branch, level, entry_date
+        FROM trainee
+    </select>
+
+</mapper>

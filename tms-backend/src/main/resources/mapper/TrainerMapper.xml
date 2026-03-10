@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.laura.tmsbackend.mapper.TrainerMapper">
+
+    <insert id="insert">
+        INSERT INTO trainer(name,
+                            course_name,
+                            branch)
+        VALUES(#{name},#{courseName},#{branch})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM trainer WHERE trainer_id = #{trainerId}
+    </delete>
+
+    <update id="update">
+        UPDATE trainer SET
+                           name = #{name},
+                           course_name = #{courseName},
+                           branch = #{branch}
+        WHERE trainer_id = #{trainerId}
+    </update>
+
+    <select id="findById"  resultType="com.laura.tmsbackend.model.Trainer">
+        SELECT trainer_id, name, course_name, branch
+        FROM trainer WHERE trainer_id = #{trainerId}
+    </select>
+
+    <select id="findAll" resultType="com.laura.tmsbackend.model.Trainer">
+        SELECT trainer_id, name, course_name, branch
+        FROM trainer
+    </select>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laura.tmsbackend.mapper.EnrollmentMapper">
+    <insert id="insert">
+        INSERT INTO enrollment(training_class_id, trainee_id, enroll_date, attendance_status)
+        VALUES  (#{trainingClassId},
+                 #{traineeId},
+                 #{enrollDate},
+                 #{attendanceStatus})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM enrollment
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE enrollment SET
+                              training_class_id = #{trainingClassId},
+                              trainee_id = #{traineeId},
+                              enroll_date = #{enrollDate},
+                              attendance_status = #{attendanceStatus}
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" resultType="com.laura.tmsbackend.model.Enrollment">
+        SELECT id, training_class_id, trainee_id, enroll_date, attendance_status
+        FROM enrollment WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultType="com.laura.tmsbackend.model.Enrollment">
+        SELECT id, training_class_id, trainee_id, enroll_date, attendance_status
+        FROM enrollment
+    </select>
+
+</mapper>

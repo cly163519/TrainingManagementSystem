@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.laura.tmsbackend.mapper.TrainingClassMapper">
+
+    <insert id="insert">
+        INSERT INTO training_class(class_name, state, coordinator, level,
+                                   course_level, attend_count, class_days, start_date, end_date,
+                                   department, location)
+        VALUES(#{className}, #{state}, #{coordinator}, #{level},
+               #{courseLevel}, #{attendCount}, #{classDays}, #{startDate},
+               #{endDate}, #{department}, #{location})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM training_class WHERE class_no = #{classNo}
+    </delete>
+
+    <update id="update">
+        UPDATE training_class SET
+                                  class_name = #{className},
+                                  state = #{state},
+                                  coordinator = #{coordinator},
+                                  level = #{level},
+                                  course_level = #{courseLevel},
+                                  attend_count = #{attendCount},
+                                  class_days = #{classDays},
+                                  start_date = #{startDate},
+                                  end_date = #{endDate},
+                                  department = #{department},
+                                  location = #{location}
+        WHERE class_no = #{classNo}
+    </update>
+
+    <select id="findAll" resultType="com.laura.tmsbackend.model.TrainingClass">
+        SELECT class_no, class_name, state, coordinator, level,
+               course_level, attend_count, class_days, start_date,
+               end_date, department, location
+        FROM training_class
+    </select>
+
+    <select id="findById" resultType="com.laura.tmsbackend.model.TrainingClass">
+        SELECT class_no, class_name, state, coordinator, level,
+               course_level, attend_count, class_days, start_date,
+               end_date, department, location
+        FROM training_class WHERE class_no = #{classNo}
+    </select>
+
+</mapper>

@@ -24,12 +24,12 @@
                            branch = #{branch},
                            level = #{level},
                            entry_date = #{entryDate}
-        WHERE salesId = #{sales_id}
+        WHERE sales_id = #{salesId}
     </update>
 
     <select id="findById" resultType="com.laura.tmsbackend.model.Trainee">
         SELECT sales_id, name, branch, level, entry_date
-        FROM WHERE salesId = #{sales_id}
+        FROM trainee WHERE salesId = #{sales_id}
     </select>
 
     <select id="findAll" resultType="com.laura.tmsbackend.model.Trainee">

@@ -1,0 +1,16 @@
+POST http://localhost:8080/api/trainingclass
+Content-Type: application/json
+
+{
+  "className": "New sales",
+  "state": "PLANNED",
+  "coordinator": "Teacher Zhang",
+  "level": "level-3 company",
+  "courseLevel": "New sales pre-training",
+  "attendCount": 30,
+  "classDays": 5,
+  "startDate": "2025-03-01",
+  "endDate": "2025-03-05",
+  "department": "Beijing Branch",
+  "location": "Beijing branch training room"
+}

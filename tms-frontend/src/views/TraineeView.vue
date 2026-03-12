@@ -1,3 +1,3 @@
 <template>
-  <div>Trainer</div>
+  <div>Trainee</div>
 </template>

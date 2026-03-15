@@ -24,7 +24,7 @@ public class TrainingClassController {
             trainingClassService.deleteById(classNo);
         }
 
-        @PutMapping
+        @PutMapping("/{classNo}")
         public void update(@RequestBody TrainingClass trainingClass) {
             trainingClassService.update(trainingClass);
         }

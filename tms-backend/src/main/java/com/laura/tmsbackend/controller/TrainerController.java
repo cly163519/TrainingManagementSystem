@@ -23,7 +23,7 @@ public class TrainerController {
     public void delete(@PathVariable Long trainerId){
         trainerService.deleteById(trainerId);
     }
-    @PutMapping
+    @PutMapping("/{trainerId}")
     public void update(@RequestBody Trainer trainer){
         trainerService.update(trainer);
     }

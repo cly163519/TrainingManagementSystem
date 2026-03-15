@@ -24,7 +24,7 @@ public class EnrollmentController {
         enrollmentService.deleteById(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public void update(@RequestBody Enrollment enrollment){
         enrollmentService.update(enrollment);
     }

@@ -113,4 +113,19 @@ body {
   background: #f5f7fa;
   padding: 24px;
 }
+.main-content {
+  background: #f5f7fa;
+  padding: 24px;
+  max-width: 1400px;
+}
+
+.el-card {
+  margin-bottom: 16px;
+}
+
+.el-table {
+  font-size: 14px;
+}
+
+
 </style>

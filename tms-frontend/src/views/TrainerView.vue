@@ -10,12 +10,12 @@
     </el-card>
 
     <el-card>
-      <el-table :data="filteredList" stripe v-loading="loading">
+      <el-table :data="filteredList" stripe v-loading="loading"  style="width:100%">
         <el-table-column prop="trainerId" label="ID" width="80" />
         <el-table-column prop="name" label="Name" width="120" />
-        <el-table-column prop="courseName" label="Course" min-width="200" />
+        <el-table-column prop="courseName" label="Course Name" min-width="200" />
         <el-table-column prop="branch" label="Branch" width="160" />
-        <el-table-column label="Actions" width="160" align="center">
+        <el-table-column label="Actions" min-width="160" align="center">
           <template #default="{ row }">
             <el-button size="small" @click="openDialog(row)">Edit</el-button>
             <el-button size="small" type="danger" @click="handleDelete(row.trainerId)">Delete</el-button>
@@ -25,11 +25,11 @@
     </el-card>
 
     <el-dialog v-model="dialogVisible" :title="isEdit ? 'Edit Trainer' : 'New Trainer'" width="480px">
-      <el-form :model="form" :rules="rules" ref="formRef" label-width="110px">
+      <el-form :model="form" :rules="rules" ref="formRef" label-width="120px">
         <el-form-item label="Name" prop="name">
           <el-input v-model="form.name" />
         </el-form-item>
-        <el-form-item label="Course" prop="courseName">
+        <el-form-item label="Course Name" prop="courseName">
           <el-input v-model="form.courseName" />
         </el-form-item>
         <el-form-item label="Branch" prop="branch">
@@ -61,7 +61,7 @@ const emptyForm = () => ({ trainerId: null, name: '', courseName: '', branch: ''
 const form = ref(emptyForm())
 const rules = {
   name: [{ required: true, message: 'Please enter name', trigger: 'blur' }],
-  courseName: [{ required: true, message: 'Please enter course', trigger: 'blur' }],
+  courseName: [{ required: true, message: 'Please enter course name', trigger: 'blur' }],
 }
 
 const filteredList = computed(() =>

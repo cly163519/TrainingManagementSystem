@@ -1,8 +1,10 @@
 import axios from 'axios'
 
+
 const http = axios.create({
     baseURL: 'http://localhost:8080',
     timeout: 10000,
+    withCredentials: true,   // ← 加在這裡
 })
 
 // TrainingClass
@@ -49,3 +51,13 @@ export const courseFileApi = {
     update: (id, data) => http.put(`/api/coursefile/${id}`, data),
     delete: (id) => http.delete(`/api/coursefile/${id}`),
 }
+
+// User / Auth
+
+export const login = (data) => http.post('/api/users/login', data)
+export const logout = () => http.post('/api/users/logout')
+export const getMe = () => http.get('/api/users/me')
+export const getUsers = () => http.get('/api/users')
+export const createUser = (data) => http.post('/api/users/create', data)
+export const updateUser = (id, data) => http.put(`/api/users/${id}`, data)
+export const deleteUser = (id) => http.delete(`/api/users/${id}`)

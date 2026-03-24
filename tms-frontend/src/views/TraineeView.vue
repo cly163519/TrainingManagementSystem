@@ -66,6 +66,8 @@ import { ref, computed, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search, Upload } from '@element-plus/icons-vue'
 import { traineeApi } from '../api/index.js'
+
+//1.Reading Excel files using the xlsx library
 import * as XLSX from 'xlsx'
 
 const loading = ref(false)
@@ -140,13 +142,16 @@ function excelDateToString(value) {
   return value
 }
 
+//2. Triggered when the user selects a file
 function handleImport(file) {
   const reader = new FileReader()
   reader.onload = async (e) => {
+    // 3. Parse Excel → Convert to a JSON array
     const workbook = XLSX.read(e.target.result, { type: 'binary' })
     const sheet = workbook.Sheets[workbook.SheetNames[0]]
     const rows = XLSX.utils.sheet_to_json(sheet)
 
+    // 4. Date format conversion (Excel dates are numbers)
     const trainees = rows.map(row => ({
       name: row['name'] || row['Name'],
       branch: row['branch'] || row['Branch'],
@@ -154,8 +159,9 @@ function handleImport(file) {
       entryDate: excelDateToString(row['entryDate'] || row['EntryDate']),
     }))
 
+
     try {
-      await Promise.all(trainees.map(t => traineeApi.create(t)))
+      await Promise.all(trainees.map(t => traineeApi.create(t)))// 5. Batch POST to the backend
       ElMessage.success(`Imported ${trainees.length} trainees successfully`)
       loadData()
     } catch {
